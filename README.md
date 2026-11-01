@@ -73,8 +73,8 @@ pub trait IsolationBackend: Send + Sync {
 ### 2. `HypervisorSandbox` (KVM MicroVM)
 - **Sub-50ms Cold Boots**: Lightweight microVM runtime providing hardware-enforced virtual machine boundaries.
 - **Cross-Architecture Virtualization**:
-  - RISC-V Hypervisor (`H`) extension on SpacemiT K3 (`pey-wail-deu`).
-  - Intel VT-x hardware acceleration on Alder Lake (`entrance`) and Xeon (`rubicon`).
+  - RISC-V Hypervisor (`H`) extension on SpacemiT K3 (`worker-riscv64`).
+  - Intel VT-x hardware acceleration on Alder Lake (`node-a`) and Xeon (`node-b`).
 - **Complete Guest Kernel Isolation**: Used for untrusted public PR validation and hostile execution payloads.
 
 ---
@@ -83,12 +83,12 @@ pub trait IsolationBackend: Send + Sync {
 
 | Node | Architecture | Cores / RAM | Primary Isolation Backend | Hardware Acceleration |
 |---|---|---|---|---|
-| `entrance` | Intel N100 (x86_64) | 4C / 32GB DDR5 | `KernelSandbox` / `HypervisorSandbox` | Intel VT-x |
-| `rubicon` | Intel Xeon E3 (x86_64)| 4C/8T / 32GB DDR3 | `KernelSandbox` / `HypervisorSandbox` | Intel VT-x |
-| `pey-wail-deu` | SpacemiT K3 (riscv64) | 16C (8×X100 + 8×A100) / 32GB LPDDR5 | `KernelSandbox` / `HypervisorSandbox` | Landlock / RVV / RISC-V KVM `H` |
+| `node-a` | Intel N100 (x86_64) | 4C / 32GB DDR5 | `KernelSandbox` / `HypervisorSandbox` | Intel VT-x |
+| `node-b` | Intel Xeon E3 (x86_64)| 4C/8T / 32GB DDR3 | `KernelSandbox` / `HypervisorSandbox` | Intel VT-x |
+| `worker-riscv64` | SpacemiT K3 (riscv64) | 16C (8×X100 + 8×A100) / 32GB LPDDR5 | `KernelSandbox` / `HypervisorSandbox` | Landlock / RVV / RISC-V KVM `H` |
 
 ---
 
 ## License
 
-Licensed under the GNU Affero General Public License v3.0 (AGPL-3.0-only). See LICENSE for details.
+Licensed under the GNU Lesser General Public License v3.0 with the LGPL-3.0 Linking Exception (LGPL-3.0-only WITH LGPL-3.0-linking-exception). See LICENSE for details.
